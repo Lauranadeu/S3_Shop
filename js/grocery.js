@@ -155,12 +155,42 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+    
+    for (let i in cartList){
+        
+        if(cart.includes(cartList[i]) ){
+            for(let item in cart){
+                if(cart[item]==cartList[i]){
+                    cart[item].quantity+=1;
+                    cart[item].subtotal+=cart[item].price;
+                    cart[item].subtotalWithDiscount+=cart[item].price;
+                    console.log("Modifiquem producte  " + cart[item].name + "  quantitat " +cart[item].quantity   )
+                }
+            }            
+        }
+        else{
+            element=[cartList[i]];
+            cart.push(element);
+            cart[i].quantity=1;
+            cart[i].subtotal=cartList[i].price;
+            cart[i].subtotalWithDiscount=cartList[i].price;
+            console.log("afegim producte " + cartList[i].name)
+        }
+    }
+
+
 }
+
+
 
 // Exercise 6
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+
 }
+
+
 
 // Exercise 7
 function addToCart(id) {
